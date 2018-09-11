@@ -1,5 +1,7 @@
 package com.alejo.ejercicio.call.repository;
 
-public interface OperadorRepository {
+import com.alejo.ejercicio.call.model.Operador;
+
+public interface OperadorRepository extends EmpleadoRepository<Operador> {
 
 }

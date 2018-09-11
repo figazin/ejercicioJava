@@ -1,5 +1,5 @@
 package com.alejo.ejercicio.call.model;
 
-public class Director {
+public class Director extends Empleado {
 
 }

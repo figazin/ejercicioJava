@@ -1,5 +1,7 @@
 package com.alejo.ejercicio.call.repository;
 
-public interface DirectorRepository {
+import com.alejo.ejercicio.call.model.Director;
+
+public interface DirectorRepository extends EmpleadoRepository<Director>{
 
 }

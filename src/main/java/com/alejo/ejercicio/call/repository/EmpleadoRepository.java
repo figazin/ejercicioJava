@@ -4,8 +4,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.alejo.ejercicio.call.model.Empleado;
 
-public interface EmpleadoRepository extends MongoRepository<Empleado, String> {
+public interface EmpleadoRepository<E extends Empleado> extends MongoRepository<E, String> {
 
-    public Empleado findFirstByLibre();
+    public E findFirstByLibreIsTrue();
 
 }
