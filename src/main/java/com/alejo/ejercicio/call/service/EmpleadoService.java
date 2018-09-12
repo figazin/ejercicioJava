@@ -6,4 +6,6 @@ public interface EmpleadoService {
 	
 	Empleado obtenerEmpleadoLibre();
 
+	void liberarEmpleado(Empleado empleado);
+
 }

@@ -20,12 +20,17 @@ public abstract class AbstractEmpleadoChain <E extends Empleado>{
 		return nextChain;
 	}
 	
-	public Empleado obtenerEmpleado() {
-		Empleado empleado = empleadoRepository.findFirstByLibreIsTrue();
+	public E obtenerEmpleado() {
+		E empleado = empleadoRepository.findFirstByLibreIsTrue();
 		if(empleado == null) {
-			empleado = nextChain.obtenerEmpleado();
+			empleado = (E) nextChain.obtenerEmpleado();
 		}
-		return empleado;
+		empleado.setLibre(false);
+		return empleadoRepository.save(empleado);
+	}
+
+	public void guardarEmpleado(Empleado empleado) {
+		empleadoRepository.save((E) empleado);
 	}
 
 }

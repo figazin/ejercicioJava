@@ -35,4 +35,10 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 		return empleadoLibre;
 	}
 
+	@Override
+	public void liberarEmpleado(Empleado empleado) {
+		empleado.setLibre(true);
+		operadorChain.guardarEmpleado(empleado);
+	}
+
 }
