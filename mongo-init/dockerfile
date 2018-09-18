@@ -1,0 +1,4 @@
+FROM mongo
+COPY mongo-init-data.sh /mongo-init-data.sh
+RUN chmod +x /mongo-init-data.sh
+CMD /mongo-init-data.sh

@@ -3,7 +3,7 @@ package com.alejo.ejercicio.call.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection = "empleado")
 public class Empleado {
 
 	@Id
@@ -29,6 +29,16 @@ public class Empleado {
 	}
 	public void setLibre(Boolean libre) {
 		this.libre = libre;
+	}
+	
+	public Empleado() {
+		
+	}
+	
+	public Empleado(String nombre, String apellido) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.libre = true;
 	}
 	
 	
