@@ -32,6 +32,8 @@ public class LlamadaServiceImpl implements LlamadaService{
 			llamada.setEmpleado(empleado);
 			manejarLlamada(llamadaRepository.save(llamada));
 			finalizarLlamada(llamada);
+		} else {
+			return null;
 		}
 		return llamada;
 	}

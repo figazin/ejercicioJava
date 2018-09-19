@@ -1,0 +1,4 @@
+FROM mongo
+COPY ./empleado.json /empleado.json
+EXPOSE 27017
+CMD mongoimport --host mongodb --db call --collection empleado --type json --file /empleado.json --jsonArray
