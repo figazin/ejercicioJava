@@ -1,6 +1,7 @@
 package com.alejo.ejercicio.call.chain.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alejo.ejercicio.call.model.Empleado;
 import com.alejo.ejercicio.call.repository.EmpleadoRepository;
@@ -20,17 +21,25 @@ public abstract class AbstractEmpleadoChain <E extends Empleado>{
 		return nextChain;
 	}
 	
-	public E obtenerEmpleado() {
+	@Transactional
+	public Empleado obtenerEmpleado() {
+		//Agregar LockModeType PessimisticLocking
 		E empleado = empleadoRepository.findFirstByLibreIsTrue();
 		if(empleado == null) {
-			empleado = (E) nextChain.obtenerEmpleado();
+			if(nextChain != null) {
+				empleado = (E) nextChain.obtenerEmpleado();
+			} else {
+				empleado = null;
+			}
+		} else {
+			empleado.setLibre(false);
+			empleado = empleadoRepository.save(empleado);
 		}
-		empleado.setLibre(false);
-		return empleadoRepository.save(empleado);
+		return empleado;
 	}
 
-	public void guardarEmpleado(Empleado empleado) {
-		empleadoRepository.save((E) empleado);
+	public E guardarEmpleado(Empleado empleado) {
+		return empleadoRepository.save((E) empleado);
 	}
-
+	
 }

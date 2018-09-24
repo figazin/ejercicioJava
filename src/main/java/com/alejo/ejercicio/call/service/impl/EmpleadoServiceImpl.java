@@ -30,8 +30,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
     
 	@Override
 	public Empleado obtenerEmpleadoLibre() {
-		Empleado empleadoLibre = operadorChain.obtenerEmpleado();
-		return empleadoLibre;
+		return operadorChain.obtenerEmpleado();
 	}
 
 	@Override
